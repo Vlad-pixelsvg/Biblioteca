@@ -16,14 +16,16 @@
            1. SETUP GENERALE & VARIABILI CROMATICHE (Tema Dark con Accenti Oro)
            ========================================================================= */
         :root {
-            --bg-dark: #0d1318;
-            --bg-card: rgba(20, 29, 37, 0.75);
-            --gold: #d4b27d;
-            --gold-hover: #f4c381;
-            --text-light: #ffffff;
-            --text-muted: #cbd5e1;
-            --navbar-height: 80px;
-        }
+    --bg-dark: #0d1318;
+    --bg-card: rgba(20, 29, 37, 0.75);
+    --gold: #d4b27d;
+    --gold-hover: #f4c381;
+    --text-light: #ffffff;
+    --text-muted: #cbd5e1;
+    --navbar-height: 80px;
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+    --font-serif: 'Merriweather', serif;
+}
 
         * {
             box-sizing: border-box;
@@ -44,106 +46,44 @@
            2. NAVBAR SUPERIORE (Identica al mockup approvato)
            ========================================================================= */
         .navbar {
-            background-color: #ffffff;
-            width: 100%;
-            height: var(--navbar-height);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 60px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-        }
+    background-color: #ffffff;
+    width: 100%;
+    height: var(--navbar-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
 
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
+.logo-area { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo-icon-box { border: 2px solid #111c24; padding: 4px 8px; font-size: 14px; font-weight: 800; color: #111c24; font-family: var(--font-serif); border-radius: 4px; }
+.logo-text { display: flex; flex-direction: column; }
+.logo-text .main-logo { font-size: 15px; font-weight: 800; color: #111c24; line-height: 1.1; }
+.logo-text .sub-logo { font-size: 13px; color: #555e66; line-height: 1.1; }
 
-        .logo-icon-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #111c24;
-            padding: 4px 8px;
-            font-size: 14px;
-            font-weight: 800;
-            color: #111c24;
-            font-family: 'Merriweather', serif;
-            border-radius: 4px;
-        }
+.nav-links { display: flex; align-items: center; list-style: none; height: 100%; }
+.nav-links a { text-decoration: none; color: #43525e; font-size: 12px; font-weight: 700; padding: 0 16px; letter-spacing: 0.8px; text-transform: uppercase; height: 100%; display: flex; align-items: center; transition: all 0.25s ease; }
+.nav-links a:hover { color: var(--color-gold); }
 
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
+.menu-toggle { display: none; font-size: 24px; cursor: pointer; color: #111c24; }
 
-        .logo-text .main-logo {
-            font-size: 15px;
-            font-weight: 800;
-            color: #111c24;
-            line-height: 1.1;
-        }
-
-        .logo-text .sub-logo {
-            font-size: 13px;
-            color: #555e66;
-            line-height: 1.1;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            list-style: none;
-            height: 100%;
-        }
-
-        .nav-links li {
-            height: 100%;
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #43525e;
-            font-size: 12px;
-            font-weight: 700;
-            padding: 0 16px;
-            letter-spacing: 0.8px;
-            text-transform: uppercase;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            transition: all 0.25s ease;
-        }
-
-        .nav-links li.active a {
-            background-color: #111c24;
-            color: var(--gold);
-        }
-
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-
-        .search-icon {
-            color: #111c24;
-            font-size: 14px;
-            padding-left: 15px;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .search-icon:hover {
-            color: var(--gold);
-        }
-
+@media (max-width: 992px) {
+    .navbar { padding: 0 20px; }
+    .menu-toggle { display: block; }
+    
+    .nav-links { 
+        display: none; flex-direction: column; position: fixed; top: var(--navbar-height); left: 0; width: 100%; 
+        background: #fff; padding: 20px 0; border-bottom: 2px solid #eee; z-index: 999;
+    }
+    .nav-links.active { display: flex; }
+    .nav-links li { height: auto; width: 100%; }
+    .nav-links a { padding: 15px 20px; width: 100%; border-bottom: 1px solid #f0f0f0; }
+}
         /* =========================================================================
            3. SEZIONE HERO (Interfaccia principale con lettere fluttuanti)
            ========================================================================= */
@@ -576,24 +516,27 @@
 </head>
 <body>
 
-    <!-- NAVBAR SUPERIORE -->
-    <nav class="navbar">
-        <a href="#" class="logo-area">
-            <div class="logo-icon-box">BC</div>
-            <div class="logo-text">
-                <span class="main-logo">Biblioteca civica</span>
-                <span class="sub-logo">di Trofarello</span>
-            </div>
-        </a>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li
-            <li><a href="https://www.bi-to.it">Catalogo</a></li>
-            <li><a href="#">Servizi</a></li>
-            <li><a href="#">Contatti</a></li>
-            <li><a href="#">Archivio locale</a></li>
-            <li class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></li>
-        </ul>
-    </nav>
+   <nav class="navbar">
+    <a href="#" class="logo-area">
+        <div class="logo-icon-box">BC</div>
+        <div class="logo-text">
+            <span class="main-logo">Biblioteca civica</span>
+            <span class="sub-logo">di Trofarello</span>
+        </div>
+    </a>
+    
+    <div class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="https://www.bi-to.it">Catalogo</a></li>
+        <li><a href="#servizi">Servizi</a></li>
+        <li><a href="contatti.html">Contatti</a></li>
+        <li><a href="Archivio.html">Archivio locale</a></li>
+    </ul>
+</nav>
 
     <!-- SEZIONE HERO -->
     <section class="hero-section">
@@ -836,4 +779,3 @@
     </script>
 </body>
 </html>
-
